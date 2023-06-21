@@ -18,3 +18,29 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+// API Routes
+app.get('/api/notes', (req, res) => {
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) throw err;
+
+    const notes = JSON.parse(data);
+    res.json(notes);
+  });
+});
+
+app.post('/api/notes', (req, res) => {
+  fs.readFile('db.json', 'utf8', (err, data) => {
+    if (err) throw err;
+
+    const notes = JSON.parse(data);
+    const newNote = req.body;
+    newNote.id = uuidv4();
+
+    notes.push(newNote);
+
+    fs.writeFile('db.json', JSON.stringify(notes), (err) => {
+      if (err) throw err;
+      res.json(newNote);
+    });
+  });
+});
