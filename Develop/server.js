@@ -21,7 +21,7 @@ app.get('*', (req, res) => {
 
 // API Routes
 app.get('/api/notes', (req, res) => {
-  fs.readFile('db.json', 'utf8', (err, data) => {
+  fs.readFile('./db/db.json', 'utf8', (err, data) => {
     if (err) throw err;
 
     const notes = JSON.parse(data);
@@ -30,7 +30,7 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-  fs.readFile('db.json', 'utf8', (err, data) => {
+  fs.readFile('./db/db.json', 'utf8', (err, data) => {
     if (err) throw err;
 
     const notes = JSON.parse(data);
@@ -39,7 +39,7 @@ app.post('/api/notes', (req, res) => {
 
     notes.push(newNote);
 
-    fs.writeFile('db.json', JSON.stringify(notes), (err) => {
+    fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
       if (err) throw err;
       res.json(newNote);
     });
