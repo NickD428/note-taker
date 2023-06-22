@@ -33,4 +33,5 @@
   Project created by NickD428 with the help of google, youtube and ChatGPT!
   Check out my other works here! https://github.com/NickD428
   Questions? Contact me here: chargerfan428@aol.com
-  
+
+  Here is a link to the deployed Heroku app: https://polar-refuge-82865-02ff56fb0777.herokuapp.com/notes
